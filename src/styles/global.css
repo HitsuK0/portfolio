@@ -419,7 +419,7 @@ a {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  color: var(--fg);
+  color: #ed358e;
 }
 
 .tags span:not(:last-child)::after {
@@ -572,4 +572,30 @@ button:focus-visible {
   * {
     transition: none !important;
   }
+}
+
+/* ============================================
+   LOGOS (projets + formations)
+   ============================================ */
+.project-title-row,
+.formation-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.project-logo {
+  width: 90px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.formation-logo {
+  width: 120px;
+  height: 70px;
+  object-fit: contain;
+  border-radius: 6px;
+  flex-shrink: 0;
 }
