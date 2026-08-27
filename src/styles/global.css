@@ -1,5 +1,4 @@
 :root {
-  /* --- PALETTE : style suisse sombre, accents bleu ciel / rose --- */
   --bg: #0e0f11;
   --fg: #f2f2f0;
   --muted: #8a8d91;
@@ -45,9 +44,6 @@ a {
   }
 }
 
-/* ============================================
-   NAVIGATION — fond dégradé, filet dégradé en bas
-   ============================================ */
 .topbar {
   position: sticky;
   top: 0;
@@ -120,9 +116,6 @@ a {
   border-color: var(--pink);
 }
 
-/* ============================================
-   HERO
-   ============================================ */
 .hero {
   padding: 64px 0 40px;
 }
@@ -137,9 +130,9 @@ a {
 }
 
 .hero h1 {
-  font-weight: 900;
+  font-weight: 700;
   text-transform: uppercase;
-  font-size: clamp(42px, 9vw, 108px);
+  font-size: clamp(42px, 9vw, 80px);
   line-height: 0.92;
   letter-spacing: -0.01em;
   margin: 0 0 28px;
@@ -147,17 +140,7 @@ a {
 }
 
 .hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: end;
-}
-
-@media (max-width: 720px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
+  display: block;
 }
 
 .hero .role {
@@ -209,9 +192,6 @@ a {
   color: var(--bg);
 }
 
-/* ============================================
-   CARD — une carte par section
-   ============================================ */
 .card {
   position: relative;
   background: var(--card-bg);
@@ -272,9 +252,6 @@ a {
   color: var(--fg);
 }
 
-/* ============================================
-   À PROPOS
-   ============================================ */
 .about-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -321,9 +298,6 @@ a {
   text-align: right;
 }
 
-/* ============================================
-   FORMATION
-   ============================================ */
 .formation-row {
   display: grid;
   grid-template-columns: 140px 1fr;
@@ -364,9 +338,16 @@ a {
   font-size: 14px;
 }
 
-/* ============================================
-   PROJETS
-   ============================================ */
+.formation-link {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.15s ease;
+}
+
+.formation-link:hover h3 {
+  color: var(--local-accent);
+}
+
 .project-row {
   display: block;
   text-decoration: none;
@@ -427,9 +408,6 @@ a {
   color: var(--muted);
 }
 
-/* ============================================
-   STACK TECHNIQUE (logos + noms)
-   ============================================ */
 .stack-block {
   margin-bottom: 24px;
 }
@@ -481,9 +459,6 @@ a {
   font-weight: 600;
 }
 
-/* ============================================
-   CONTACT (logos + noms)
-   ============================================ */
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -543,9 +518,6 @@ a {
   overflow: hidden;
 }
 
-/* ============================================
-   FOOTER
-   ============================================ */
 footer {
   padding: 32px 0 48px;
   text-align: center;
@@ -556,9 +528,6 @@ footer {
   color: var(--muted);
 }
 
-/* ============================================
-   ACCESSIBILITÉ
-   ============================================ */
 a:focus-visible,
 button:focus-visible {
   outline: 3px solid var(--blue);
@@ -574,9 +543,6 @@ button:focus-visible {
   }
 }
 
-/* ============================================
-   LOGOS (projets + formations)
-   ============================================ */
 .project-title-row,
 .formation-title-row {
   display: flex;

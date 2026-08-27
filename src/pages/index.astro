@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 
 const nom = "Wellinger Chloé";
-const role = "Développeuse — C# - .NET / Java / Python";
+const role = "Développeuse Junior";
 const summary =
   "Passionnée par le développement logiciel et la conception d'applications, curieuse et recherche de découvertes. J'aime explorer de nouvelles technologies et transformer des besoins en solutions concrètes.";
 
@@ -12,23 +12,24 @@ const apropos = [
 ];
 
 const specs = [
-  { label: "Langues", value: "FR, EN" },
+  { label: "Langues", value: "Français, Anglais" },
   { label: "Disponibilité", value: "Stage, Emploi" },
 ];
 
-// logo : chemin depuis /public, ou null si pas de logo
 const formations = [
   {
     periode: "Depuis 2024",
     titre: "Haute École Robert Schuman",
     desc: "Bachelier en informatique de gestion / développement — spécialisation en développement d'applications.",
     logo: "/logos/hers.png",
+    lien: "https://www.hers.be/",
   },
   {
     periode: "2018 - 2024",
     titre: "Institut Saint-Michel",
     desc: "Certificat d'enseignement secondaire supérieur (CESS)",
     logo: "/logos/saintmichel.jpg",
+    lien: "https://ism-neufchateau.be/",
   },
 ];
 
@@ -135,24 +136,21 @@ const contact = [
 ---
 
 <Layout title={`${nom} — Portfolio`}>
-  <!-- NAVIGATION -->
   <header class="topbar">
     <div class="topbar-inner">
-      <span class="mark">{nom}</span>
+      <span class="mark"></span>
       <nav>
         <a href="#apropos">À propos</a>
         <a href="#formation">Formation</a>
         <a href="#projets">Projets</a>
-        <a href="#stack">Stack</a>
+        <a href="#stack">Compétences</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <div class="wrap">
-    <!-- HERO -->
     <section class="hero">
-      <p class="eyebrow">Portfolio — {new Date().getFullYear()}</p>
       <h1>{nom}</h1>
       <div class="hero-grid">
         <div>
@@ -162,12 +160,12 @@ const contact = [
               Voir GitHub
             </a>
             <a class="btn" href="#projets">Voir les projets</a>
+            <a class="btn" href="/public/cv/CV_Chloé_Wellinger.pdf">Télécharger CV</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- À PROPOS -->
     <section id="apropos" class="card card--pink">
       <div class="section-head">
         <p class="label">Présentation</p>
@@ -190,7 +188,6 @@ const contact = [
       </div>
     </section>
 
-    <!-- FORMATION -->
     <section id="formation" class="card card--blue">
       <div class="section-head">
         <p class="label">Parcours</p>
@@ -204,7 +201,13 @@ const contact = [
               <div>
                 <div class="formation-title-row">
                   {f.logo && <img class="formation-logo" src={f.logo} alt={f.titre} loading="lazy" />}
-                  <h3>{f.titre}</h3>
+                  {f.lien ? (
+                    <a href={f.lien} target="_blank" class="formation-link">
+                      <h3>{f.titre}</h3>
+                    </a>
+                  ) : (
+                    <h3>{f.titre}</h3>
+                  )}
                 </div>
                 <p>{f.desc}</p>
               </div>
@@ -214,7 +217,6 @@ const contact = [
       </div>
     </section>
 
-    <!-- PROJETS -->
     <section id="projets" class="card card--pink">
       <div class="section-head">
         <p class="label">Sélection</p>
@@ -241,7 +243,6 @@ const contact = [
       </div>
     </section>
 
-    <!-- STACK TECHNIQUE -->
     <section id="stack" class="card card--blue">
       <div class="section-head">
         <p class="label">Outils</p>
@@ -266,7 +267,6 @@ const contact = [
       }
     </section>
 
-    <!-- CONTACT -->
     <section id="contact" class="card card--pink">
       <div class="section-head">
         <p class="label">Me contacter</p>
