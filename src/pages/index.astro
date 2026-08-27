@@ -20,11 +20,19 @@ const specs = [
   { label: "Disponibilité", value: "Stage, Emploi" },
 ];
 
+// logo : chemin depuis /public, ou null si pas de logo
 const formations = [
   {
     periode: "Depuis 2024",
     titre: "Haute École Robert Schuman",
     desc: "Bachelier en informatique de gestion / développement — spécialisation en développement d'applications.",
+    logo: "/logos/hers.png",
+  },
+  {
+    periode: "2018 - 2024",
+    titre: "Institut Saint-Michel",
+    desc: "Certificat d'enseignement secondaire supérieur (CESS)",
+    logo: null,
   },
 ];
 
@@ -34,18 +42,21 @@ const projets = [
     desc: "Application de planification des horaires développée dans le cadre scolaire réalisée pour l'ASBL Comprendre et Parler",
     tags: ["Java", "SpringBoot", "SQL Server"],
     lien: "https://github.com/HitsuK0/Lexia",
+    logo: "/logos/lexia.png",
   },
   {
     nom: "DailyBackup",
     desc: "Conception et développement d'une application de gestion de sauvegardes, permettant de configurer les fichiers à sauvegarder, restaurer des données et réinitialiser les paramètres.",
     tags: ["C#", ".NET"],
-    lien: "https://github.com/ton-pseudo/projet",
+    lien: "https://github.com/HitsuK0/DailyBackup",
+    logo: "/logos/dailybackup.png",
   },
   {
-    nom: "Nom du projet",
-    desc: "Une ou deux phrases expliquant ce que fait le projet et le problème qu'il résout.",
-    tags: ["Kotlin", "Android"],
-    lien: "https://github.com/ton-pseudo/projet",
+    nom: "TaskFlow",
+    desc: "Conception et développement d'une application de gestion de tâches en temps réel, avec authentification, gestion multi-utilisateurs et synchronisation via WebSocket.",
+    tags: ["Java", "JavaFX", "WebSocket", "SQL"],
+    lien: "https://github.com/HitsuK0/TaskFlow",
+    logo: "/logos/taskflow.png",
   },
 ];
 
@@ -80,7 +91,7 @@ const stack = [
   {
     cat: "Frameworks",
     items: [
-      { nom: "Spring", icon: "spring" },
+      { nom: "SpringBoot", icon: "spring" },
       { nom: ".NET", icon: "dotnet" },
     ],
   },
@@ -102,26 +113,26 @@ const stack = [
 const contact = [
   {
     label: "Discord",
-    valeur: "ton_pseudo",
+    valeur: ".hitsu.ko12",
     lien: null,
     icon: "https://skillicons.dev/icons?i=discord",
   },
   {
     label: "Email",
-    valeur: "ton-email@proton.me",
-    lien: "mailto:ton-email@proton.me",
+    valeur: "wellinger.chloe@proton.me",
+    lien: "mailto:wellinger.chloe@proton.me",
     icon: "https://img.shields.io/badge/-000000?style=flat-square&logo=protonmail&logoColor=8B89CC",
   },
   {
     label: "GitHub",
-    valeur: "github.com/ton-pseudo",
-    lien: "https://github.com/ton-pseudo",
+    valeur: "github.com/HitsuK0",
+    lien: "https://github.com/HitsuK0",
     icon: "https://skillicons.dev/icons?i=github",
   },
   {
     label: "LinkedIn",
     valeur: "linkedin.com/in/ton-profil",
-    lien: "https://linkedin.com/in/ton-profil",
+    lien: "https://linkedin.com/in/chloé-wellinger-784513431/",
     icon: "https://skillicons.dev/icons?i=linkedin",
   },
 ];
@@ -150,7 +161,6 @@ const contact = [
       <div class="hero-grid">
         <div>
           <p class="role">{role}</p>
-          <p class="summary">{summary}</p>
           <div class="cta-row">
             <a class="btn filled" href={contact.find((c) => c.label === "GitHub")?.lien} target="_blank">
               Voir GitHub
@@ -196,7 +206,10 @@ const contact = [
             <div class="formation-row">
               <span class="period">{f.periode}</span>
               <div>
-                <h3>{f.titre}</h3>
+                <div class="formation-title-row">
+                  {f.logo && <img class="formation-logo" src={f.logo} alt={f.titre} loading="lazy" />}
+                  <h3>{f.titre}</h3>
+                </div>
                 <p>{f.desc}</p>
               </div>
             </div>
@@ -216,7 +229,10 @@ const contact = [
           projets.map((p) => (
             <a class="project-row" href={p.lien} target="_blank">
               <div class="project-row-top">
-                <h3>{p.nom}</h3>
+                <div class="project-title-row">
+                  {p.logo && <img class="project-logo" src={p.logo} alt={p.nom} loading="lazy" />}
+                  <h3>{p.nom}</h3>
+                </div>
                 <span class="arrow">↗</span>
               </div>
               <p>{p.desc}</p>
