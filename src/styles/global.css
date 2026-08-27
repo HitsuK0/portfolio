@@ -1,0 +1,575 @@
+:root {
+  /* --- PALETTE : style suisse sombre, accents bleu ciel / rose --- */
+  --bg: #0e0f11;
+  --fg: #f2f2f0;
+  --muted: #8a8d91;
+  --blue: #5ec8fa;
+  --pink: #ff6fb5;
+  --card-bg: rgba(255, 255, 255, 0.035);
+  --card-border: rgba(255, 255, 255, 0.14);
+  --divider: rgba(255, 255, 255, 0.12);
+
+  --font: "Archivo", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+}
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+@media (max-width: 640px) {
+  .wrap {
+    padding: 0 20px;
+  }
+}
+
+/* ============================================
+   NAVIGATION — fond dégradé, filet dégradé en bas
+   ============================================ */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: linear-gradient(90deg, rgba(94, 200, 250, 0.1), rgba(255, 111, 181, 0.1));
+  backdrop-filter: blur(14px);
+  position: relative;
+}
+
+.topbar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--pink));
+}
+
+.topbar-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 640px) {
+  .topbar-inner {
+    padding: 0 20px;
+  }
+}
+
+.topbar .mark {
+  font-weight: 900;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--fg);
+}
+
+.topbar nav {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.topbar nav::-webkit-scrollbar {
+  display: none;
+}
+
+.topbar nav a {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  color: var(--fg);
+  white-space: nowrap;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.topbar nav a:hover {
+  color: var(--pink);
+  border-color: var(--pink);
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero {
+  padding: 64px 0 40px;
+}
+
+.hero .eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--pink);
+  margin: 0 0 20px;
+}
+
+.hero h1 {
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(42px, 9vw, 108px);
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  margin: 0 0 28px;
+  color: var(--blue);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: end;
+}
+
+@media (max-width: 720px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.hero .role {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 12px;
+  color: var(--pink);
+}
+
+.hero .summary {
+  font-size: 16px;
+  color: var(--muted);
+  margin: 0 0 24px;
+  max-width: 480px;
+}
+
+.cta-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  padding: 14px 24px;
+  border: 2px solid var(--fg);
+  border-radius: 8px;
+  color: var(--fg);
+  transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+}
+
+.btn:hover {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.btn.filled {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.btn.filled:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: var(--bg);
+}
+
+/* ============================================
+   CARD — une carte par section
+   ============================================ */
+.card {
+  position: relative;
+  background: var(--card-bg);
+  border: 2px solid var(--card-border);
+  border-radius: 18px;
+  padding: 40px;
+  margin-bottom: 24px;
+  overflow: hidden;
+  --local-accent: var(--blue);
+}
+
+.card:last-of-type {
+  margin-bottom: 0;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--local-accent);
+}
+
+.card--pink {
+  --local-accent: var(--pink);
+}
+
+.card--blue {
+  --local-accent: var(--blue);
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: 28px 20px;
+  }
+}
+
+.section-head {
+  margin-bottom: 32px;
+}
+
+.section-head .label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--local-accent);
+  margin: 0 0 6px;
+}
+
+.section-head h2 {
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(22px, 3vw, 32px);
+  margin: 0;
+  color: var(--fg);
+}
+
+/* ============================================
+   À PROPOS
+   ============================================ */
+.about-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 48px;
+}
+
+@media (max-width: 720px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+.about-text p {
+  font-size: 16px;
+  color: var(--fg);
+  margin: 0 0 16px;
+  max-width: 520px;
+}
+
+.spec-list {
+  border-top: 1px solid var(--divider);
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--divider);
+  font-size: 13px;
+}
+
+.spec-row dt {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--local-accent);
+}
+
+.spec-row dd {
+  margin: 0;
+  color: var(--muted);
+  text-align: right;
+}
+
+/* ============================================
+   FORMATION
+   ============================================ */
+.formation-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 24px;
+  padding: 20px 0;
+  border-top: 1px solid var(--divider);
+}
+
+.formation-row:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+@media (max-width: 640px) {
+  .formation-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+.formation-row .period {
+  font-weight: 900;
+  font-size: 20px;
+  color: var(--local-accent);
+}
+
+.formation-row h3 {
+  font-weight: 700;
+  font-size: 17px;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  color: var(--fg);
+}
+
+.formation-row p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ============================================
+   PROJETS
+   ============================================ */
+.project-row {
+  display: block;
+  text-decoration: none;
+  color: var(--fg);
+  padding: 24px 0;
+  border-top: 1px solid var(--divider);
+  border-radius: 10px;
+  transition: background 0.15s ease;
+}
+
+.project-row:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.project-row:hover {
+  background: color-mix(in srgb, var(--local-accent) 8%, transparent);
+}
+
+.project-row-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.project-row h3 {
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(20px, 3vw, 28px);
+  margin: 0;
+  color: var(--fg);
+}
+
+.project-row .arrow {
+  font-size: 22px;
+  color: var(--local-accent);
+  flex-shrink: 0;
+}
+
+.project-row p {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 10px 0 12px;
+  max-width: 560px;
+}
+
+.tags {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--fg);
+}
+
+.tags span:not(:last-child)::after {
+  content: " / ";
+  color: var(--muted);
+}
+
+/* ============================================
+   STACK TECHNIQUE (logos + noms)
+   ============================================ */
+.stack-block {
+  margin-bottom: 24px;
+}
+
+.stack-block:last-child {
+  margin-bottom: 0;
+}
+
+.stack-block .cat {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--local-accent);
+  margin: 0 0 12px;
+}
+
+.stack-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.stack-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px 8px 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--divider);
+  border-radius: 10px;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.stack-chip:hover {
+  border-color: var(--local-accent);
+  background: color-mix(in srgb, var(--local-accent) 12%, transparent);
+}
+
+.stack-chip img {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.stack-chip span {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ============================================
+   CONTACT (logos + noms)
+   ============================================ */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 640px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--divider);
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--fg);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.contact-row:hover {
+  border-color: var(--local-accent);
+  background: color-mix(in srgb, var(--local-accent) 10%, transparent);
+}
+
+.contact-row img {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border-radius: 5px;
+}
+
+.contact-row .label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--local-accent);
+  display: block;
+}
+
+.contact-row .value {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.contact-row .meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+  padding: 32px 0 48px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+/* ============================================
+   ACCESSIBILITÉ
+   ============================================ */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition: none !important;
+  }
+}
