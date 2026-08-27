@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+const base = import.meta.env.BASE_URL;
 
 const nom = "Wellinger Chloé";
 const role = "Développeuse Junior";
@@ -21,14 +22,14 @@ const formations = [
     periode: "Depuis 2024",
     titre: "Haute École Robert Schuman",
     desc: "Bachelier en informatique de gestion / développement — spécialisation en développement d'applications.",
-    logo: "/logos/hers.png",
+    logo: "{base}logos/hers.png",
     lien: "https://www.hers.be/",
   },
   {
     periode: "2018 - 2024",
     titre: "Institut Saint-Michel",
     desc: "Certificat d'enseignement secondaire supérieur (CESS)",
-    logo: "/logos/saintmichel.jpg",
+    logo: "{base}logos/saintmichel.jpg",
     lien: "https://ism-neufchateau.be/",
   },
 ];
@@ -39,21 +40,21 @@ const projets = [
     desc: "Application de planification des horaires développée dans le cadre scolaire réalisée pour l'ASBL Comprendre et Parler",
     tags: ["Java", "SpringBoot", "SQL Server"],
     lien: "https://github.com/HitsuK0/Lexia",
-    logo: "/logos/logo_lexia.png",
+    logo: "{base}logos/logo_lexia.png",
   },
   {
     nom: "DailyBackup",
     desc: "Conception et développement d'une application de gestion de sauvegardes, permettant de configurer les fichiers à sauvegarder, restaurer des données et réinitialiser les paramètres.",
     tags: ["C#", ".NET"],
     lien: "https://github.com/HitsuK0/DailyBackup",
-    logo: "/logos/dailybackup.png",
+    logo: "{base}logos/dailybackup.png",
   },
   {
     nom: "TaskFlow",
     desc: "Conception et développement d'une application de gestion de tâches en temps réel, avec authentification, gestion multi-utilisateurs et synchronisation via WebSocket.",
     tags: ["Java", "JavaFX", "WebSocket", "SQL"],
     lien: "https://github.com/HitsuK0/TaskFlow",
-    logo: "/logos/taskflow.png",
+    logo: "{base}logos/taskflow.png",
   },
 ];
 
@@ -160,7 +161,7 @@ const contact = [
               Voir GitHub
             </a>
             <a class="btn" href="#projets">Voir les projets</a>
-            <a class="btn" href="/public/cv/CV_Chloé_Wellinger.pdf">Télécharger CV</a>
+            <a class="btn" href="{base}cv/CV_Chloé_Wellinger.pdf">Télécharger CV</a>
           </div>
         </div>
       </div>
