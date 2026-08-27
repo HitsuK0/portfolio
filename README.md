@@ -14,7 +14,7 @@ cd portfolio
 docker compose up -d
 ```
 
-Le site est ensuite accessible sur [http://localhost:4321](http://localhost:4321).
+Le site est ensuite accessible sur [http://localhost:4321/portfolio](http://localhost:4321/portfolio).
 
 Les modifications faites dans `src/` se rechargent automatiquement dans le navigateur (hot reload) — pas besoin de relancer le conteneur.
 
