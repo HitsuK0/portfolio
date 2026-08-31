@@ -448,6 +448,10 @@ a {
   background: color-mix(in srgb, var(--local-accent) 12%, transparent);
 }
 
+.stack-chip--noicon {
+  padding: 8px 14px;
+}
+
 .stack-chip img {
   width: 20px;
   height: 20px;

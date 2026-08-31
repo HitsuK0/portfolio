@@ -64,6 +64,7 @@ const stack = [
     items: [
       { nom: "Java", icon: "java" },
       { nom: "C#", icon: "cs" },
+      { nom: "C", icon: "c" },
       { nom: "Python", icon: "python" },
       { nom: "Kotlin", icon: "kotlin" },
     ],
@@ -91,16 +92,23 @@ const stack = [
     items: [
       { nom: "SpringBoot", icon: "spring" },
       { nom: ".NET", icon: "dotnet" },
+      { nom: "Microservices", icon: null },
+    ],
+  },
+  {
+    cat: "DevOps",
+    items: [
+      { nom: "Linux", icon: "linux" },
+      { nom: "Docker", icon: "docker" },
+      { nom: "Ansible", icon: "ansible" },
     ],
   },
   {
     cat: "Outils",
     items: [
-      { nom: "Docker", icon: "docker" },
       { nom: "Git", icon: "git" },
       { nom: "GitHub", icon: "github" },
       { nom: "GitLab", icon: "gitlab" },
-      { nom: "Linux", icon: "linux" },
       { nom: "VS Code", icon: "vscode" },
       { nom: "IntelliJ", icon: "idea" },
       { nom: "Visual Studio", icon: "visualstudio" },
@@ -139,7 +147,7 @@ const contact = [
 <Layout title={`${nom} — Portfolio`}>
   <header class="topbar">
     <div class="topbar-inner">
-      <span class="mark"></span>
+      <span class="mark">Portfolio</span>
       <nav>
         <a href="#apropos">À propos</a>
         <a href="#formation">Formation</a>
@@ -256,8 +264,10 @@ const contact = [
             <div class="stack-chips">
               {
                 s.items.map((i) => (
-                  <div class="stack-chip">
-                    <img src={`https://skillicons.dev/icons?i=${i.icon}`} alt={i.nom} loading="lazy" />
+                  <div class:list={["stack-chip", !i.icon && "stack-chip--noicon"]}>
+                    {i.icon && (
+                      <img src={`https://skillicons.dev/icons?i=${i.icon}`} alt={i.nom} loading="lazy" />
+                    )}
                     <span>{i.nom}</span>
                   </div>
                 ))

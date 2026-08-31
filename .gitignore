@@ -2,3 +2,17 @@ node_modules
 dist
 .astro
 .pnpm-store
+.claude
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode
+.idea
+
+# Env
+.env
+.env.*
+!.env.example
